@@ -7,10 +7,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
+import { TaskService } from './task.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, DragDropModule ],
   declarations: [ AppComponent, HelloComponent, TaskStatusComponent ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [TaskService]
 })
 export class AppModule { }

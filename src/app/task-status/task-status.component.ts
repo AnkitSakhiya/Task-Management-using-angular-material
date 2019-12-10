@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
+import { TaskService } from '../task.service';
+
 @Component({
   selector: 'app-task-status',
   templateUrl: './task-status.component.html',
@@ -8,25 +10,20 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class TaskStatusComponent implements OnInit {
 
-  constructor() { }
+  new : string[];
+  todo : string[];
+  qa : string[];
+  done : string[];
+  constructor(private taskservice:TaskService) {
+    this.new = this.taskservice.new;
+    this.todo = this.taskservice.todo;
+    this.qa = this.taskservice.qa;
+    this.done = this.taskservice.done;
+   }
 
   ngOnInit() {
   }
-
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
-
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
+  
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
