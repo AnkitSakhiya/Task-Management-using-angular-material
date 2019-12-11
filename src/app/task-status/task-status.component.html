@@ -1,7 +1,34 @@
 <div class='col-sm-12'>
+  <div class='row'>
+    <button style='position:absolute; right:15px' type='button' class='btn btn-success' data-toggle="modal" (click)="newTask()" data-target="#Newtaskmodel"><i class="fa fa-plus" aria-hidden="true"></i></button>
+  </div>
+  <div class="modal" id="Newtaskmodel" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add new task</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="TaskName">Task Name</label>
+            <input type="text" class="form-control" name="TaskName" [formControl]='TaskName' id="txtTaskName" required>
+            <div *ngIf="TaskName.invalid && (TaskName.dirty || TaskName.touched)"
+            class="alert alert-danger">Please Enter Task Name</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" #closeButton class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" (click)="CreateNewtask()" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class='row' cdkDropListGroup>
-    <div class="col-sm-3">
-      <h2>New</h2>
+    <div class="col-sm-3" style='margin-top:50px;'>
+      <div class='btn btn-secondary col-sm-12'>New  <span class="badge badge-light">{{new.length}}</span></div>
 
       <div
         cdkDropList
@@ -15,8 +42,8 @@
       </div>
     </div>
 
-    <div class="col-sm-3 clear-fix">
-      <h2>To do</h2>
+    <div class="col-sm-3 clear-fix" style='margin-top:50px;'>
+      <div class='btn btn-info col-sm-12'>To do  <span class="badge badge-light">{{todo.length}}</span></div>
 
       <div
         cdkDropList
@@ -28,8 +55,8 @@
       </div>
     </div>
 
-    <div class="col-sm-3">
-      <h2>QA</h2>
+    <div class="col-sm-3" style='margin-top:50px;'>
+      <div class='btn btn-primary col-sm-12'>QA  <span class="badge badge-light">{{qa.length}}</span></div>
 
       <div
         cdkDropList
@@ -41,8 +68,8 @@
       </div>
     </div>
 
-    <div class="col-sm-3">
-      <h2>Done</h2>
+    <div class="col-sm-3" style='margin-top:50px;'>
+      <div class='btn btn-success col-sm-12'>Done  <span class="badge badge-light">{{done.length}}</span></div>
 
       <div
         cdkDropList

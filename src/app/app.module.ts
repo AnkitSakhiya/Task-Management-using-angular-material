@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
@@ -10,7 +10,7 @@ import { TaskStatusComponent } from './task-status/task-status.component';
 import { TaskService } from './task.service';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, DragDropModule ],
+  imports:      [ BrowserModule, FormsModule, DragDropModule, ReactiveFormsModule ],
   declarations: [ AppComponent, HelloComponent, TaskStatusComponent ],
   bootstrap:    [ AppComponent ],
   providers: [TaskService]

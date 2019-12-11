@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { FormControl } from '@angular/forms';
 
 import { TaskService } from '../task.service';
 
@@ -9,7 +10,8 @@ import { TaskService } from '../task.service';
   styleUrls: ['./task-status.component.css']
 })
 export class TaskStatusComponent implements OnInit {
-
+  ///@ViewChild('closebutton') closebutton;
+  TaskName = new FormControl('');
   new : string[];
   todo : string[];
   qa : string[];
@@ -23,7 +25,16 @@ export class TaskStatusComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
+  newTask(){
+    this.TaskName.reset();
+  }
+
+  CreateNewtask(){
+    this.new.push(this.TaskName.value);
+    this.TaskName.reset();
+    $("#Newtaskmodel").modal('hide');
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
